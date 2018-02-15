@@ -150,14 +150,65 @@ var renderPhotos = function (arr) {
 for(var i = 0; i < dataPhotos.length; i++){
   fragment.appendChild(renderPhotos(dataPhotos[i]));
 }
-picturesBlock.appendChild(fragment);
 
+picturesBlock.appendChild(fragment);
+var allPicturesBlock = picturesBlock.querySelectorAll('.picture');
 var gallery = document.querySelector('.gallery-overlay');
-var FirstPhotosItem = dataPhotos[0];
-gallery.classList.remove('hidden');
-gallery.querySelector('.gallery-overlay-image').setAttribute('src', FirstPhotosItem.url);
-gallery.querySelector('.likes-count').textContent = FirstPhotosItem.likes;
-gallery.querySelector('.comments-count').textContent = commentsArr.length;
+var galleryOverlayClose = gallery.querySelector('.gallery-overlay-close');
+var ENTER_KEY = 13;
+var ESC_KEY = 27;
+
+var fullPictureFill = function (obj) {
+  gallery.querySelector('.gallery-overlay-image').setAttribute('src', obj.url);
+  gallery.querySelector('.likes-count').textContent = obj.likes;
+  gallery.querySelector('.comments-count').textContent = getRandomNumber(1,commentsArr.length);
+};
+var openFullPicture = function (target) {
+  event.preventDefault();
+  fullPictureFill(dataPhotos[searchNumberOfPicture(target)]);
+  gallery.classList.remove('hidden');
+};
+
+var closeFullPicture = function () {
+  gallery.classList.add('hidden');
+};
+
+var searchNumberOfPicture = function(target){
+  for(var i = 0; i < allPicturesBlock.length; i++){
+    if(target.getAttribute('src') === allPicturesBlock[i].querySelector('img').getAttribute('src')){
+      return i;
+    }
+  }
+};
+
+picturesBlock.addEventListener('click',function (event) {
+    var target = event.target;
+    if(target.tagName === 'IMG'){
+      openFullPicture(target);
+    }
+});
+picturesBlock.addEventListener('keydown',function (event) {
+  var target = event.target;
+  if(target.className === 'picture'){
+    if(event.keyCode === ENTER_KEY){
+      openFullPicture(target.querySelector('img'));
+    }
+  }
+});
+
+galleryOverlayClose.addEventListener('click', function () {
+  closeFullPicture();
+});
+galleryOverlayClose.addEventListener('keydown',function (event) {
+  if(event.keyCode === ENTER_KEY){
+    closeFullPicture();
+  }
+});
+document.addEventListener('keydown', function (event) {
+  if(event.keyCode === ESC_KEY){
+    closeFullPicture();
+  }
+});
 
 
 
