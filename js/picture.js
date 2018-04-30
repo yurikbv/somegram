@@ -1,214 +1,167 @@
 'use strict';
-var number = 1;
-var commentsArr = ['Всё отлично!', 'В целом всё неплохо. Но не всё.',
-  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+
+var getRandomNumber = function (max,min) {
+  return Math.floor((min || 0) + Math.random() * max)
+};
+
+var comments = ['Всё отлично!','В целом всё неплохо. Но не всё.','Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.'
+  ,'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
-function getUrlNumber() {
-  return number++
-}
-function getRandomNumber(min, max) {
-  return Math.floor(Math.random()*(max-min+1))+min;
-}
-var dataPhotos = [{
-  url: 'photos/' + getUrlNumber() + '.jpg',
-  likes: getRandomNumber(15,200),
-  comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-},
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  },
-  {
-    url: 'photos/' + getUrlNumber() + '.jpg',
-    likes: getRandomNumber(15,200),
-    comments: commentsArr[getRandomNumber(0,commentsArr.length-1)]
-  }];
 
-var picturesBlock = document.querySelector('.pictures');
-var pictureTemplate = document.querySelector('#picture-template').content;
-var fragment = document.createDocumentFragment();
-var renderPhotos = function (arr) {
-  var pictureTemplateItem = pictureTemplate.cloneNode(true);
-  pictureTemplateItem.querySelector('img').setAttribute('src', arr.url);
-  pictureTemplateItem.querySelector('.picture-likes').textContent = arr.likes;
-  pictureTemplateItem.querySelector('.picture-comments').textContent = arr.comments;
-  return pictureTemplateItem;
-};
-for(var i = 0; i < dataPhotos.length; i++){
-  fragment.appendChild(renderPhotos(dataPhotos[i]));
-}
-
-picturesBlock.appendChild(fragment);
-var allPicturesBlock = picturesBlock.querySelectorAll('.picture');
-var gallery = document.querySelector('.gallery-overlay');
-var galleryOverlayClose = gallery.querySelector('.gallery-overlay-close');
-var ENTER_KEY = 13;
-var ESC_KEY = 27;
-
-var fullPictureFill = function (obj) {
-  gallery.querySelector('.gallery-overlay-image').setAttribute('src', obj.url);
-  gallery.querySelector('.likes-count').textContent = obj.likes;
-  gallery.querySelector('.comments-count').textContent = getRandomNumber(1,commentsArr.length);
-};
-var openFullPicture = function (target) {
-  event.preventDefault();
-  fullPictureFill(dataPhotos[searchNumberOfPicture(target)]);
-  gallery.classList.remove('hidden');
-};
-
-var closeFullPicture = function () {
-  gallery.classList.add('hidden');
-};
-
-var searchNumberOfPicture = function(target){
-  for(var i = 0; i < allPicturesBlock.length; i++){
-    if(target.getAttribute('src') === allPicturesBlock[i].querySelector('img').getAttribute('src')){
-      return i;
-    }
+var photos = [{
+    url: 'photos/1.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/2.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)],comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/3.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/4.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/5.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)],comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/6.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/7.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/8.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/9.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/10.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)],comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/11.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/12.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/13.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)],comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/14.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/15.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/16.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)],comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/17.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/18.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/19.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/20.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)],comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/21.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/22.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)],comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/23.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/24.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)]]
+  },
+  {
+    url: 'photos/25.jpg',
+    likes: getRandomNumber(200,15),
+    comments: [comments[getRandomNumber(comments.length)],comments[getRandomNumber(comments.length)]]
   }
+  ]
+;
+
+var pictures = document.body.querySelector('.pictures');
+var fragmentImage = document.createDocumentFragment();
+var template = document.querySelector('#picture-template').content.querySelector('.picture');
+var galleryOverlay = document.body.querySelector('.gallery-overlay');
+
+
+var renderImage = function (obj) {
+  var clone = template.cloneNode(true);
+  clone.querySelector('img').src = obj.url;
+  clone.querySelector('.picture-comments').textContent = obj.comments.length;
+  clone.querySelector('.picture-likes').textContent = obj.likes;
+  return clone;
+};
+var renderImages = function () {
+  for(var i = 0; i < photos.length; i++){
+    fragmentImage.appendChild(renderImage(photos[i]))
+  }
+  return fragmentImage;
+};
+var showDefaultPicture = function(){
+  galleryOverlay.querySelector('.gallery-overlay-image').src = photos[0].url;
+  galleryOverlay.querySelector('.likes-count').textContent = photos[0].likes;
+  galleryOverlay.querySelector('.comments-count').textContent = photos[0].comments.length
 };
 
-picturesBlock.addEventListener('click',function (event) {
-    var target = event.target;
-    if(target.tagName === 'IMG'){
-      openFullPicture(target);
-    }
-});
-picturesBlock.addEventListener('keydown',function (event) {
-  var target = event.target;
-  if(target.className === 'picture'){
-    if(event.keyCode === ENTER_KEY){
-      openFullPicture(target.querySelector('img'));
-    }
-  }
-});
-
-galleryOverlayClose.addEventListener('click', function () {
-  closeFullPicture();
-});
-galleryOverlayClose.addEventListener('keydown',function (event) {
-  if(event.keyCode === ENTER_KEY){
-    closeFullPicture();
-  }
-});
-document.addEventListener('keydown', function (event) {
-  if(event.keyCode === ESC_KEY){
-    closeFullPicture();
-  }
-});
-
-
-
+galleryOverlay.classList.remove('hidden');
+pictures.appendChild(renderImages());
+showDefaultPicture();
