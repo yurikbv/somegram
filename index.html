@@ -28,8 +28,8 @@
       enctype="multipart/form-data"
       autocomplete="off">
   <div class="upload-image">
-    <input type="file" id="upload-file" class="upload-input" name="filename" required>
-    <label class="upload-file upload-control" for="upload-file"></label>
+    <input type="file" id="upload-file" class="upload-input" name="filename" required >
+    <label class="upload-file upload-control" for="upload-file" tabindex="0"></label>
   </div>
 
   <div class="upload-overlay  hidden">
@@ -39,7 +39,7 @@
           <button type="button"
                   class="upload-resize-control upload-resize-controls-button upload-resize-controls-button-dec">–
           </button><!--
-          --><input type="text" class="upload-resize-control upload-resize-controls-value" value="55%" readonly title="Image Scale" name="scale"/><!--
+          --><input type="text" class="upload-resize-control upload-resize-controls-value" value="25%" readonly title="Image Scale" name="scale"/><!--
           --><button type="button"
                   class="upload-resize-control upload-resize-controls-button upload-resize-controls-button-inc">+
           </button>
@@ -97,7 +97,7 @@
 
         <input class="upload-form-hashtags" name="hashtags" placeholder="#хэш-тег">
 
-        <textarea class="upload-form-description" name="description" placeholder="Ваш комментарий..."></textarea>
+        <textarea class="upload-form-description" name="description" placeholder="Ваш комментарий..." maxlength="140"></textarea>
 
         <button class="upload-form-cancel" type="reset" id="upload-cancel"></button>
         <button class="upload-form-submit" type="submit" id="upload-submit">Отправить</button>
@@ -137,7 +137,7 @@
 
 
 <div class="gallery-overlay hidden">
-  <span class="gallery-overlay-close">&times;</span>
+  <span class="gallery-overlay-close" tabindex="0">&times;</span>
   <div class="gallery-overlay-preview">
     <img src="" class="gallery-overlay-image" alt="">
     <div class="gallery-overlay-controls">
@@ -157,5 +157,6 @@
   </a>
 </template>
 <script src="js/picture.js"></script>
+<script src="js/form.js"></script>
 </body>
 </html>
