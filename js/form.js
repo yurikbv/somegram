@@ -8,9 +8,18 @@
   var formCancel = form.querySelector('.upload-form-cancel');
   var formDescription = form.querySelector('.upload-form-description');
 
+  var resizeControl = form.querySelector('.upload-resize-controls');
+  var resizeControlValue =  resizeControl.querySelector('.upload-resize-controls-value');
+  var effectImage = form.querySelector('.effect-image-preview');
+  var effectControls =form.querySelector('.upload-effect-controls');
+  var hashtag = form.querySelector('.upload-form-hashtags');
+
+  var effectLevelLine = form.querySelector('.upload-effect-level-line');
+  var effectLevelPin = form.querySelector('.upload-effect-level-pin');
+  var effectLevelValue = form.querySelector('.upload-effect-level-val');
 
   var effect = null;
-
+  effectLevelLine.hidden = true;
   var onEscPressCadr = function(event){
     window.util.isEscEvent(event,closeCadr);
   };
@@ -52,11 +61,6 @@
     if(event.keyCode === 13) closeCadr(event);
   });
 
-  var resizeControl = form.querySelector('.upload-resize-controls');
-  var resizeControlValue =  resizeControl.querySelector('.upload-resize-controls-value');
-  var effectImage = form.querySelector('.effect-image-preview');
-  var effectControls =form.querySelector('.upload-effect-controls');
-
   var scaleImage = function(value){
     (value !== 100) ? effectImage.style.transform = 'scale(0.' + value + ')' : effectImage.style.transform = 'scale(1)';
   };
@@ -77,15 +81,19 @@
 
   effectControls.addEventListener('change',function (event) {
     effect = event.target.value ;
+    effectLevelPin.style.left = '';
+    effectLevelValue.style.width = '';
     if(effect === 'none') {
+      effectImage.style.filter = '';
       effectImage.className = 'effect-image-preview';
+      effectLevelLine.hidden = true;
     } else {
+      effectImage.style.filter = '';
       effectImage.className = 'effect-image-preview';
-      effectImage.classList.add('effect-' + effect)
+      effectImage.classList.add('effect-' + effect);
+      effectLevelLine.hidden = false;
     }
   });
-
-  var hashtag = form.querySelector('.upload-form-hashtags');
 
   var verifyErrors = function (target,hashtags) {
     var hashArray = hashtags.split(' ');
@@ -112,11 +120,29 @@
     }
   });
 
-
-  var effectLevelLine = form.querySelector('.upload-effect-level-line');
-  var effectLevelPin = form.querySelector('.upload-effect-level-pin');
-  var effectLevelValue = form.querySelector('.upload-effect-level-val');
-
+  var changeValueFilter = function(value){
+    console.log(effect);
+    console.log((value / (effectLevelLine.offsetWidth / 3)).toFixed(2));
+    switch (effect){
+      case 'none':
+        break;
+      case 'marvin':
+        effectImage.style.filter = 'invert(' + ((value / effectLevelLine.offsetWidth) * 100).toFixed(0) + '%)';
+        break;
+      case  'chrome':
+        effectImage.style.filter = 'grayscale(' + (value / (effectLevelLine.offsetWidth)).toFixed(2) + ')';
+        break;
+      case 'sepia':
+        effectImage.style.filter = 'sepia(' + (value / (effectLevelLine.offsetWidth)).toFixed(2) + ')';
+        break;
+      case 'phobos':
+        effectImage.style.filter = 'blur(' + (value / (effectLevelLine.offsetWidth / 3)).toFixed(2) + 'px)';
+        break;
+      case  'heat':
+        effectImage.style.filter = 'brightness(' + (value / (effectLevelLine.offsetWidth / 3)).toFixed(2) + ')';
+        break;
+    }
+  };
 
 
   effectLevelPin.addEventListener('mousedown',function (event) {
@@ -133,15 +159,12 @@
       startCoord = {
         x: eventMove.pageX
       };
-      var defaultValueEffect = effectLevelPin.offsetLeft / (effectLevelLine.offsetWidth / 100) ;
       effectLevelPin.style.left = Math.max(effectLevelLine.offsetLeft - effectLevelPin.offsetWidth - 2, effectLevelPin.offsetLeft - shift.x) + 'px';
       if(effectLevelPin.offsetLeft > effectLevelLine.offsetWidth) {
-        effectLevelPin.style.left = effectLevelLine.offsetWidth + 'px'
+        effectLevelPin.style.left = effectLevelLine.offsetWidth + 'px';
       }
       effectLevelValue.style.width = effectLevelPin.offsetLeft + 'px';
-      // console.log(startCoord);
-      console.log(defaultValueEffect);
-      // console.log(shift.x);
+      changeValueFilter(effectLevelPin.offsetLeft);
     };
 
     var onMouseUp = function (eventUp){
