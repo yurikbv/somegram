@@ -4,7 +4,15 @@
 
   var template = document.querySelector('#picture-template').content.querySelector('.picture');
   var pictures = document.body.querySelector('.pictures');
-  var fragmentImage = document.createDocumentFragment();
+
+  window.showErrorMessage = function (message) {
+    var div = document.createElement('div');
+    div.cssText = 'margin: 0 auto; background-color: red; position: fixed; top:0; left: 0; right: 0; padding: 5px;';
+    div.style.textAlign = 'center';
+    div.style.fontSize = '30px';
+    div.textContent = message;
+    document.body.insertAdjacentElement('afterbegin',div);
+  };
 
   var renderImage = function (obj) {
     var clone = template.cloneNode(true);
@@ -14,11 +22,14 @@
     return clone;
   };
 
-  var renderImages = function () {
-    for(var i = 0; i < window.data.photos.length; i++){
-      fragmentImage.appendChild(renderImage(window.data.photos[i]));
+  var renderImages = function (images) {
+    var fragmentImage = document.createDocumentFragment();
+    for(var i = 0; i < images.length; i++){
+      fragmentImage.appendChild(renderImage(images[i]));
     }
-    return fragmentImage;
+    pictures.appendChild(fragmentImage);
   };
-  pictures.appendChild(renderImages());
+
+  window.backend.load(renderImages,window.showErrorMessage)
+
 })();

@@ -20,6 +20,7 @@
 
   var effect = null;
   effectLevelLine.hidden = true;
+
   var onEscPressCadr = function(event){
     window.util.isEscEvent(event,closeCadr);
   };
@@ -121,8 +122,6 @@
   });
 
   var changeValueFilter = function(value){
-    console.log(effect);
-    console.log((value / (effectLevelLine.offsetWidth / 3)).toFixed(2));
     switch (effect){
       case 'none':
         break;
@@ -175,6 +174,21 @@
     document.addEventListener('mousemove',onMouseMove);
     document.addEventListener('mouseup',onMouseUp);
   });
+
+  var hideForm = function(){
+    form.querySelector('#upload-effect-none').checked = true;
+    effectLevelPin.style.left = '';
+    effectLevelValue.style.width = '';
+    effectImage.style.filter = '';
+    effectImage.className = 'effect-image-preview';
+    uploadOverlay.classList.add('hidden');
+  };
+
+  form.addEventListener('submit',function (event) {
+    window.backend.save(new FormData(form),hideForm,window.showErrorMessage);
+    event.preventDefault();
+  })
+  
 })();
 
 
